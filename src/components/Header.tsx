@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
-const Header = () => {
+interface Props {
+  toggleSideNav: (isActive: boolean) => void;
+}
+
+const Header: FC<Props> = ({ toggleSideNav }) => {
   return (
     <Wrapper>
+      <EmptyDiv />
       <Logo>
         ABOUT <span />
         YOU
       </Logo>
+      <Button onClick={() => toggleSideNav(true)}>Filter</Button>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
   padding: 10px 20px;
   @media (min-width: 1024px) {
     text-align: center;
+  }
+`;
+
+const EmptyDiv = styled.div`
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
@@ -46,6 +62,16 @@ const Logo = styled.div`
     height: 37px;
     margin: 0px 5px -7px -1px;
   }
+`;
+
+const Button = styled.button`
+  padding: 10px 25px;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
 `;
 
 export default Header;
