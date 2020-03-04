@@ -11,5 +11,8 @@
     "noStrictGenericChecks": false,
     "sourceMap": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "src"
+  ]
 }
