@@ -9,7 +9,7 @@ import { normalizeProduct } from './normalizeProduct';
 
 const SHOP_ID = 139;
 
-export const useProductLoader = () => {
+export const useProductLoader = (attributes, loaderRef) => {
   const products = useAsyncLoader(
     useCallback(
       () =>
@@ -18,7 +18,8 @@ export const useProductLoader = () => {
           SHOP_ID,
           createProductsSearchEndpointRequest({
             where: {
-              categoryId: 20290,
+              categoryId: 20236,
+              ...(attributes ? { attributes } : {})
             },
             pagination: {
               page: 1,
@@ -37,8 +38,8 @@ export const useProductLoader = () => {
             },
           }),
         ).then(({ data }) => data.entities.map(normalizeProduct)),
-      [],
-    ),
+        [loaderRef]
+      ),
   );
 
   return Array.isArray(products) ? products : [];
