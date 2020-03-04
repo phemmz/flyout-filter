@@ -25,6 +25,6 @@ describe('normalizeProduct', () => {
 
   it('should transform a backend product entity into a view model containing price', () => {
     expect(product.price).toContain('from 29,95');
-    expect(product.price).toContain('$');
+    expect(product.price).toContain('€');
   });
 });

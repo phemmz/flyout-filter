@@ -37,3 +37,8 @@ export const normalizeProduct = (product: BapiProduct): Product => ({
       )}`
     : undefined,
 });
+
+// utility function for getting only required filters
+export const getRequiredFilters = (filters, itemIds: number[]) => {
+  return filters.filter(filter => itemIds.includes(filter.id));
+}

@@ -29,4 +29,9 @@ describe('App', () => {
     const { findAllByTestId } = render(<App />);
     expect((await findAllByTestId('ProductTile')).length).toBe(50);
   });
+
+  it('should render color and pattern filter sections', async () => {
+    const { findAllByTestId } = render(<App />);
+    expect((await findAllByTestId('FilterSection')).length).toBe(2);
+  });
 });
